@@ -5,20 +5,30 @@ import { AppComponent } from './app.component';
 import { CardContainerComponent } from './components/card-container/card-container.component';
 import { GraphComponent } from './components/graph/graph.component';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { MapComponentComponent } from './components/map-component/map-component.component';
+import {AngularYandexMapsModule, YaConfig} from "angular8-yandex-maps";
+
+const config: YaConfig = {
+  apikey: 'b2832005-a1cc-47d0-a9eb-84c9d8e80205',
+  lang: 'ru_RU'
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     CardContainerComponent,
-    GraphComponent
+    GraphComponent,
+    MapComponentComponent,
   ],
   imports: [
     BrowserModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
-    })
+    }),
+    AngularYandexMapsModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
