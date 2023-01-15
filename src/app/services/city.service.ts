@@ -7,15 +7,15 @@ import {ErrorService} from "./error.service";
 @Injectable({
   providedIn: 'root'
 })
-export class PeopleService {
+export class CityService {
 
   constructor(
     private http: HttpClient,
     private errorService: ErrorService
   ) { }
 
-  getCityByName(name: string): Observable<City> {
-    return this.http.get<City>('https://api.api-ninjas.com/v1/city?name='.concat(name), {
+  getCityByName(name: string): Observable<City[]> {
+    return this.http.get<City[]>('https://api.api-ninjas.com/v1/city?name='.concat(name), {
       headers: {
         'X-Api-Key': 'VOtTuiAMf9PVpyk/eBgXEA==Lb8TN3LHVNQlqbVN'
       }

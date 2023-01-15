@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CardContainerComponent } from './components/card-container/card-container.component';
-import { GraphComponent } from './components/graph/graph.component';
-import { NgxEchartsModule } from 'ngx-echarts';
 import { MapComponentComponent } from './components/map-component/map-component.component';
 import {AngularYandexMapsModule, YaConfig} from "angular8-yandex-maps";
-import { PeopleComponent } from './components/people/people.component';
+import { GraphComponent } from './components/graph/graph.component';
+import { PopulationComponent } from './components/population/population.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const config: YaConfig = {
   apikey: 'b2832005-a1cc-47d0-a9eb-84c9d8e80205',
@@ -18,9 +18,9 @@ const config: YaConfig = {
   declarations: [
     AppComponent,
     CardContainerComponent,
-    GraphComponent,
     MapComponentComponent,
-    PeopleComponent,
+    PopulationComponent,
+    GraphComponent,
   ],
   imports: [
     BrowserModule,
