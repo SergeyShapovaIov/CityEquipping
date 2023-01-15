@@ -7,6 +7,7 @@ import { GraphComponent } from './components/graph/graph.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { MapComponentComponent } from './components/map-component/map-component.component';
 import {AngularYandexMapsModule, YaConfig} from "angular8-yandex-maps";
+import { PeopleComponent } from './components/people/people.component';
 
 const config: YaConfig = {
   apikey: 'b2832005-a1cc-47d0-a9eb-84c9d8e80205',
@@ -19,6 +20,7 @@ const config: YaConfig = {
     CardContainerComponent,
     GraphComponent,
     MapComponentComponent,
+    PeopleComponent,
   ],
   imports: [
     BrowserModule,
