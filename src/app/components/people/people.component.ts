@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {City} from "../../entity/city";
 
 @Component({
   selector: 'app-people',
@@ -6,15 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./people.component.scss']
 })
 export class PeopleComponent {
-
-  private _people: number = 0
-
-  get people(): number {
-    return this._people;
-  }
-
-  set people(value: number) {
-    this._people = value;
-  }
-
+  @Input() city: City
 }
