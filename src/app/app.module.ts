@@ -6,6 +6,7 @@ import { CardContainerComponent } from './components/card-container/card-contain
 import { MapComponentComponent } from './components/map-component/map-component.component';
 import {AngularYandexMapsModule, YaConfig} from "angular8-yandex-maps";
 import { PeopleComponent } from './components/people/people.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const config: YaConfig = {
   apikey: 'b2832005-a1cc-47d0-a9eb-84c9d8e80205',
@@ -21,7 +22,8 @@ const config: YaConfig = {
   ],
   imports: [
     BrowserModule,
-    AngularYandexMapsModule.forRoot(config)
+    AngularYandexMapsModule.forRoot(config),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
