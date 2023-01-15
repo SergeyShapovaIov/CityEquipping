@@ -27,7 +27,8 @@ const config: YaConfig = {
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     }),
-    AngularYandexMapsModule.forRoot(config)
+    AngularYandexMapsModule.forRoot(config),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
