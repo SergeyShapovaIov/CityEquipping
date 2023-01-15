@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { CardContainerComponent } from './components/card-container/card-container.component';
 import { MapComponentComponent } from './components/map-component/map-component.component';
 import {AngularYandexMapsModule, YaConfig} from "angular8-yandex-maps";
-import { PeopleComponent } from './components/people/people.component';
+import { PopulationComponent } from './components/population/population.component';
 import { HttpClientModule } from '@angular/common/http';
 
 const config: YaConfig = {
@@ -18,7 +18,7 @@ const config: YaConfig = {
     AppComponent,
     CardContainerComponent,
     MapComponentComponent,
-    PeopleComponent,
+    PopulationComponent,
   ],
   imports: [
     BrowserModule,
