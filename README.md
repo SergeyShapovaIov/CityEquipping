@@ -1,4 +1,5 @@
 [![Webhook via ReHTTP](https://www.rehttp.net/b?u=http%3A%2F%2Fwww.0pdd.com%2Fhook%2Fgithub)](https://www.rehttp.net/i?u=http%3A%2F%2Fwww.0pdd.com%2Fhook%2Fgithub)
+[![PDD status](https://www.0pdd.com/svg?name=yegor256/0pdd)](https://www.0pdd.com/p?name=SergeyShapovaIov/CityEquipping)
 
 # CityEquipping
 
