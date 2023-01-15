@@ -1,4 +1,5 @@
-https://www.0pdd.com/p?name=SergeyShapovaIov/CityEquipping
+[![Webhook via ReHTTP](https://www.rehttp.net/b?u=http%3A%2F%2Fwww.0pdd.com%2Fhook%2Fgithub)](https://www.rehttp.net/i?u=http%3A%2F%2Fwww.0pdd.com%2Fhook%2Fgithub)
+
 # CityEquipping
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
