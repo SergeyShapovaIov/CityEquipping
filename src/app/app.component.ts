@@ -9,7 +9,7 @@ import {City} from "./entity/city";
 })
 export class AppComponent implements OnInit {
   title = 'CityEquipping';
-  cityName = 'New York'
+  cityName = 'Volgograd'
   city: City;
 
   constructor(private cityService: CityService) {

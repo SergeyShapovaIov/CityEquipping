@@ -10,7 +10,7 @@ import type { EChartsOption } from 'echarts';
 export class GraphComponent {
   options: EChartsOption = {
     title: {
-      text: 'Simple Graph'
+      text: ''
     },
     tooltip: {},
     animationDurationUpdate: 1500,
