@@ -8,7 +8,6 @@ import type { EChartsOption } from 'echarts';
   styleUrls: ['./graph.component.scss']
 })
 export class GraphComponent {
-
   options: EChartsOption = {
     title: {
       text: 'Simple Graph'
