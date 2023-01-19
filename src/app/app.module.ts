@@ -8,7 +8,6 @@ import {AngularYandexMapsModule, YaConfig} from "angular8-yandex-maps";
 import { GraphComponent } from './components/graph/graph.component';
 import { PopulationComponent } from './components/population/population.component';
 import { HttpClientModule } from '@angular/common/http';
-import { GraphComponent } from './components/graph/graph.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 
 const config: YaConfig = {
