@@ -10,6 +10,7 @@ import { PopulationComponent } from './components/population/population.componen
 import { HttpClientModule } from '@angular/common/http';
 import { NgxEchartsModule } from 'ngx-echarts';
 
+
 const config: YaConfig = {
   apikey: 'b2832005-a1cc-47d0-a9eb-84c9d8e80205',
   lang: 'ru_RU'
