@@ -46,7 +46,6 @@ export class GraphComponent {
           x: 550,
           y: 500
         }],
-        // links: [],
         links: [{
           source: 0,
           target: 1,
