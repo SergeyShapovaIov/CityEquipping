@@ -1,22 +1,28 @@
 <div class="text-center px-2 py-4">
-  <h2 class="text-lg">{{title}}</h2>
-</div>
-<div>
-  <app-card-container></app-card-container>
-</div>
-<div class="mb-2 px-2 py-2">
-  <app-card-container>
-    <app-map-component></app-map-component>
-  </app-card-container>
-</div>
-<div class="inline-block">
+ <h2 class="text-lg">{{title}}</h2>
+  </div>
+  <div>
+    <app-card-container></app-card-container>
+  </div>
   <div class="mb-2 px-2 py-2">
     <app-card-container>
+      <app-map-component></app-map-component>
     </app-card-container>
   </div>
   <div class="mb-2 px-2 py-2">
     <app-card-container>
-      <app-people [population]="city.population"></app-people>
+     <app-graph></app-graph>
     </app-card-container>
   </div>
+  <div class="inline-block">
+    <div class="mb-2 px-2 py-2">
+      <app-card-container>
+      </app-card-container>
+    </div>
+    <div class="mb-2 px-2 py-2">
+      <app-card-container>
+        <app-people [population]="city.population"></app-people>
+      </app-card-container>
+    </div>
 </div>
+
