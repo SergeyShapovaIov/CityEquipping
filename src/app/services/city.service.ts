@@ -24,7 +24,7 @@ export class CityService {
       catchError(this.errorHandler.bind(this))
     )
   }
-
+  
   private errorHandler(error: HttpErrorResponse) {
     this.errorService.handle(error.message)
     return throwError(() => error.message)

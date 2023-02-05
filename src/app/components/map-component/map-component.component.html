@@ -1,8 +1,8 @@
 <div class="map-container px-2 py-4" [ngStyle]="{width: '800px', height: '500px'}">
-  <ya-map [center]="[55.751952, 37.600739]" [zoom]="12">
+  <ya-map [center]= "[latitudeCity, longitudeCity]"  [zoom]="12">
 <!-- @todo #2 Add source of coordinates.
       Add coordinates for ya-placemark from search.
     -->
-    <ya-placemark [geometry]="[55.751952, 37.600739]"></ya-placemark>
+    <ya-placemark [geometry]="[latitudeCity, longitudeCity]"></ya-placemark>
   </ya-map>
 </div>

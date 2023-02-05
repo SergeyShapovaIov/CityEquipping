@@ -3,13 +3,12 @@
   </div>
   <div>
     <app-card-container>
-        <app-search>
-        </app-search>
+        <app-search (outChangeCity)="changeCity($event)"></app-search>
     </app-card-container>
   </div>
   <div class="mb-2 px-2 py-2">
     <app-card-container>
-      <app-map-component></app-map-component>
+      <app-map-component [latitudeCity]="city.latitude" [longitudeCity]="city.longitude"></app-map-component>
     </app-card-container>
   </div>
   <div class="mb-2 px-2 py-2">
@@ -24,7 +23,7 @@
     </div>
     <div class="mb-2 px-2 py-2">
       <app-card-container>
-        <app-people [population]="city.population"></app-people>
+        <app-people [population]="city.population" ></app-people>
       </app-card-container>
     </div>
 </div>

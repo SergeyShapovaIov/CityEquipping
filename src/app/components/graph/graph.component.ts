@@ -19,7 +19,7 @@ export class GraphComponent {
       {
         type: 'graph',
         layout: 'none',
-        symbolSize: 60,
+        symbolSize: 20,
         roam: true,
         label: {
           show: true,
@@ -44,6 +44,10 @@ export class GraphComponent {
         }, {
           name: 'Node 4',
           x: 550,
+          y: 500
+        }, {
+          name: 'Node 5',
+          x: 600,
           y: 500
         }],
         links: [{

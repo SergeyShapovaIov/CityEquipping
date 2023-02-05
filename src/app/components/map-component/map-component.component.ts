@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-map-component',
@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./map-component.component.scss']
 })
 export class MapComponentComponent {
+  @Input() latitudeCity: number;
+  @Input() longitudeCity: number;
 
+  
 }
