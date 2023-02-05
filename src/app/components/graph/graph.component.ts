@@ -10,7 +10,7 @@ import type { EChartsOption } from 'echarts';
 export class GraphComponent {
   options: EChartsOption = {
     title: {
-      text: 'Simple Graph'
+      text: ''
     },
     tooltip: {},
     animationDurationUpdate: 1500,
@@ -19,7 +19,7 @@ export class GraphComponent {
       {
         type: 'graph',
         layout: 'none',
-        symbolSize: 60,
+        symbolSize: 20,
         roam: true,
         label: {
           show: true,
@@ -44,6 +44,10 @@ export class GraphComponent {
         }, {
           name: 'Node 4',
           x: 550,
+          y: 500
+        }, {
+          name: 'Node 5',
+          x: 600,
           y: 500
         }],
         links: [{

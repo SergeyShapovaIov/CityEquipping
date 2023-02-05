@@ -1,0 +1,25 @@
+.border-white.border-2.p-6{
+    border-radius: 10px;
+    #input-container {
+        
+        position: left;
+        width: 90%;
+        display: inline-block;
+
+        .input-city{
+            background-color: rgb(229 231 235 / 1);
+            font-size: 20px;
+            float: left;
+            display: block;
+            margin-top: 12px;
+        }
+
+        #icon-container{
+            float: right;
+            display: block;
+            width: 10px;  
+            height: 10px;
+            cursor: pointer; 
+        }
+    }
+}

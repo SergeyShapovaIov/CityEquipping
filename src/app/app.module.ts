@@ -9,6 +9,7 @@ import { GraphComponent } from './components/graph/graph.component';
 import { PopulationComponent } from './components/population/population.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { SearchComponent } from './components/search/search.component';
 
 
 const config: YaConfig = {
@@ -23,6 +24,7 @@ const config: YaConfig = {
     MapComponentComponent,
     PopulationComponent,
     GraphComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,9 +33,6 @@ const config: YaConfig = {
     }),
     AngularYandexMapsModule.forRoot(config),
     HttpClientModule,
-    NgxEchartsModule.forRoot({
-      echarts: () => import('echarts')
-    })
   ],
   providers: [],
   bootstrap: [AppComponent]
