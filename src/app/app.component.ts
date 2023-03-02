@@ -14,9 +14,15 @@ export class AppComponent implements OnInit {
   cityName$ : Observable<string>;
   cityName : string  = "";
   city: City;
+  cityData : any;
+  updateOptions: any;
+
+  options : any = this.cityService.options;
 
   constructor(private cityService: CityService,
-              private searchService: SearchService) {
+              private searchService: SearchService
+              ) {
+                this.cityService.options.subscribe();
 
   }
 
@@ -26,12 +32,17 @@ export class AppComponent implements OnInit {
         this.cityName = cityName;
     });
     this.cityService.getCityByName(this.cityName)
-    .subscribe(data => this.city = data[0]).add(() => console.log(this.city))
+    .subscribe(data => this.city = data[0]).add(() => console.log(this.city));
+    this.cityData = this.cityService.getDataByCityName(this.cityName);
   }
 
   changeCity(city : string) {
     this.searchService.changeCity(city);
     this.cityService.getCityByName(this.cityName)
-    .subscribe(data => this.city = data[0]).add(() => console.log(this.city))
+    .subscribe(data => this.city = data[0]).add(() => console.log(this.city));
+    this.cityData = this.cityService.getDataByCityName(this.cityName);
+    this.options  = this.cityService.options;
+    console.log(this.cityData);
+    console.log(this.options);
   }
 }
