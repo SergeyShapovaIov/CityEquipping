@@ -13,41 +13,44 @@ export class CityService {
   cityData : any;
 
   dataObjects: BehaviorSubject<any> = new BehaviorSubject<any>(
-    [{
-      name: 'Node 1',
-      x: 300,
-      y: 300
-    }, {
-      name: 'Node 2',
-      x: 800,
-      y: 300
-    }, {
-      name: 'Node 3',
-      x: 550,
-      y: 100
-    }, {
-      name: 'Node 4',
-      x: 550,
-      y: 500
-    }, {
-      name: 'Node 5',
-      x: 600,
-      y: 500
-    }]
+    [
+    //   {
+    //   name: 'Node 1',
+    //   x: 300,
+    //   y: 300
+    // }, {
+    //   name: 'Node 2',
+    //   x: 800,
+    //   y: 300
+    // }, {
+    //   name: 'Node 3',
+    //   x: 550,
+    //   y: 100
+    // }, {
+    //   name: 'Node 4',
+    //   x: 550,
+    //   y: 500
+    // }, {
+    //   name: 'Node 5',
+    //   x: 600,
+    //   y: 500
+    // }
+  ]
   );
 
-  dataLinks : any = [{
-    source: 0,
-    target: 1,
-    symbolSize: [5, 20],
-    label: {
-      show: true,
-    },
-    lineStyle: {
-      width: 5,
-      curveness: 0.2,
-    }
-  },
+  dataLinks : any = [
+  //   {
+  //   source: 0,
+  //   target: 1,
+  //   symbolSize: [5, 20],
+  //   label: {
+  //     show: true,
+  //   },
+  //   lineStyle: {
+  //     width: 5,
+  //     curveness: 0.2,
+  //   }
+  // },
   // {
   //   source: 'Node 2',
   //   target: 'Node 1',
@@ -127,9 +130,9 @@ export class CityService {
   }
 
   getDataByCityName(nameCity: string) : any {
-    return this.http.get('https://overpass-api.de/api/interpreter?data=[out:json][timeout:70];area["name"="'
+    return this.http.get('https://overpass-api.de/api/interpreter?data=[out:json][timeout:200];area["name"="'
     .concat(nameCity)
-    .concat('"]->.searchArea;(node["building"="hospital"](area.searchArea);way["building"="hospital"](area.searchArea);relation["building"="hospital"](area.searchArea););out;>;out skel qt;'))
+    .concat('"]->.searchArea;(node["building"="sports_hall"](area.searchArea);way["building"="sports_hall"](area.searchArea);relation["building"="sports_hall"](area.searchArea);node["leisure"="sports_centre"](area.searchArea);way["leisure"="sports_centre"](area.searchArea);relation["leisure"="sports_centre"](area.searchArea);node["leisure"="pitch"](area.searchArea);way["leisure"="pitch"](area.searchArea);relation["leisure"="pitch"](area.searchArea);node["leisure"="sports_hall"](area.searchArea);way["leisure"="sports_hall"](area.searchArea);relation["leisure"="sports_hall"](area.searchArea);node["leisure"="swimming_pool"](area.searchArea);way["leisure"="swimming_pool"](area.searchArea);relation["leisure"="swimming_pool"](area.searchArea);node["leisure"="track"](area.searchArea);way["leisure"="track"](area.searchArea);relation["leisure"="track"](area.searchArea););out;>;out skel qt;'))
     .subscribe( (response) => {
 
       this.dataObjects.next(this.convertOSMDataInChartData(response));

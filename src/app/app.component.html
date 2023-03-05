@@ -19,6 +19,8 @@
   <div class="inline-block">
     <div class="mb-2 px-2 py-2">
       <app-card-container>
+        <app-facilities [facilitiesNumber]="this.cityService.dataObjects.value.length">
+        </app-facilities>
       </app-card-container>
     </div>
     <div class="mb-2 px-2 py-2">
@@ -27,4 +29,3 @@
       </app-card-container>
     </div>
 </div>
-

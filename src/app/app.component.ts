@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   options : any = this.cityService.options;
 
-  constructor(private cityService: CityService,
+  constructor(public cityService: CityService,
               private searchService: SearchService
               ) {
                 this.cityService.options.subscribe();
@@ -42,7 +42,6 @@ export class AppComponent implements OnInit {
     .subscribe(data => this.city = data[0]).add(() => console.log(this.city));
     this.cityData = this.cityService.getDataByCityName(this.cityName);
     this.options  = this.cityService.options;
-    console.log(this.cityData);
-    console.log(this.options);
+
   }
 }
