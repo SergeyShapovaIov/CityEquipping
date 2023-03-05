@@ -10,6 +10,7 @@ import { PopulationComponent } from './components/population/population.componen
 import { HttpClientModule } from '@angular/common/http';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { SearchComponent } from './components/search/search.component';
+import { FacilitiesComponent } from './components/facilities/facilities.component';
 
 
 const config: YaConfig = {
@@ -25,6 +26,7 @@ const config: YaConfig = {
     PopulationComponent,
     GraphComponent,
     SearchComponent,
+    FacilitiesComponent,
   ],
   imports: [
     BrowserModule,
