@@ -3,6 +3,7 @@ import {CityService} from "./services/city.service";
 import { SearchService } from './services/search.service';
 import {City} from "./entity/city";
 import { Observable } from 'rxjs';
+import { MarkService } from './services/mark.service';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit {
   options : any = this.cityService.options;
 
   constructor(public cityService: CityService,
-              private searchService: SearchService
+              private searchService: SearchService,
+              public markService: MarkService
               ) {
                 this.cityService.options.subscribe();
 
@@ -40,8 +42,8 @@ export class AppComponent implements OnInit {
     this.searchService.changeCity(city);
     this.cityService.getCityByName(this.cityName)
     .subscribe(data => this.city = data[0]).add(() => console.log(this.city));
+    this.cityService.population = this.city.population;
     this.cityData = this.cityService.getDataByCityName(this.cityName);
     this.options  = this.cityService.options;
-
   }
 }
