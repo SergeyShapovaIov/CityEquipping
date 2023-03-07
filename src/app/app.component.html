@@ -1,9 +1,10 @@
-<div class="text-center px-2 py-4">
- <h2 class="text-lg">{{title}}</h2>
+<div class=" items-center main-conatainer">
+  <div class="text-center px-2 py-4">
+    <h2 class="text-lg">{{title}}</h2>
   </div>
-  <div>
+  <div class="mb-2 px-2 py-2">
     <app-card-container>
-        <app-search (outChangeCity)="changeCity($event)"></app-search>
+      <app-search (outChangeCity)="changeCity($event)"></app-search>
     </app-card-container>
   </div>
   <div class="mb-2 px-2 py-2">
@@ -13,19 +14,29 @@
   </div>
   <div class="mb-2 px-2 py-2">
     <app-card-container>
-     <app-graph [options] = "options.value" [updateOptions] = "updateOptions"></app-graph>
+      <app-graph [options]="options.value" [updateOptions]="updateOptions"></app-graph>
     </app-card-container>
   </div>
-  <div class="inline-block">
-    <div class="mb-2 px-2 py-2">
-      <app-card-container>
-        <app-facilities [facilitiesNumber]="this.cityService.dataObjects.value.length">
-        </app-facilities>
-      </app-card-container>
+  <div class="flex">
+    <div class="inline-block">
+      <div class="mb-2 px-2 py-2">
+        <app-card-container>
+          <app-people [population]="city.population"></app-people>
+        </app-card-container>
+      </div>
+      <div class="mb-2 px-2 py-2">
+        <app-card-container>
+          <app-facilities [facilitiesNumber]="this.cityService.dataObjects.value.length">
+          </app-facilities>
+        </app-card-container>
+      </div>
     </div>
-    <div class="mb-2 px-2 py-2">
-      <app-card-container>
-        <app-people [population]="city.population" ></app-people>
-      </app-card-container>
+    <div class="inline-block">
+      <div class="mb-2 px-2 py-2">
+        <app-card-container>
+          <app-mark [points]="this.markService.mark.value"></app-mark>
+        </app-card-container>
+      </div>
     </div>
+  </div>
 </div>

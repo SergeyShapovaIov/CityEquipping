@@ -1,0 +1,28 @@
+// .text-container{
+//     display: inline-block;
+//     vertical-align: middle;
+// }
+
+.result-point-container{
+    float: right;
+    position: absolute;
+    padding-top: 35px;
+    bottom: 0;
+    float: right;
+    width: 100%;
+}
+
+.result-point{
+    float: right;
+}
+
+.content-container{
+    height: 210px;
+    width: 460px;
+    position: relative; 
+    display: flex;
+}
+
+.text-container{
+    display: block;
+}

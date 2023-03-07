@@ -4,6 +4,7 @@ import {City} from "../entity/city";
 import {BehaviorSubject, catchError, Observable, retry, throwError} from "rxjs";
 import {ErrorService} from "./error.service";
 import type { EChartsOption } from 'echarts';
+import { MarkService } from './mark.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ import type { EChartsOption } from 'echarts';
 export class CityService {
 
   cityData : any;
+
+  population: number;
 
   dataObjects: BehaviorSubject<any> = new BehaviorSubject<any>(
     [
@@ -115,7 +118,8 @@ export class CityService {
 
   constructor(
     private http: HttpClient,
-    private errorService: ErrorService
+    private errorService: ErrorService,
+    private markService: MarkService
   ) { }
 
   getCityByName(name: string): Observable<City[]> {
@@ -173,6 +177,8 @@ export class CityService {
 
       console.log("add new point");
       console.log("close connectionn");
+
+      this.markService.mark.next(this.markService.getMarkByDataObjetsAndPopulation(this.dataObjects.value,this.population)); 
     });
   }
   

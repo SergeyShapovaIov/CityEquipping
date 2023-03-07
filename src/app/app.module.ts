@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { SearchComponent } from './components/search/search.component';
 import { FacilitiesComponent } from './components/facilities/facilities.component';
+import { MarkComponent } from './components/mark/mark.component';
 
 
 const config: YaConfig = {
@@ -27,6 +28,7 @@ const config: YaConfig = {
     GraphComponent,
     SearchComponent,
     FacilitiesComponent,
+    MarkComponent,
   ],
   imports: [
     BrowserModule,
