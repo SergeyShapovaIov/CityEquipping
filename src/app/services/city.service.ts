@@ -85,31 +85,40 @@ export class CityService {
   options: BehaviorSubject<EChartsOption> = new BehaviorSubject<EChartsOption>(
     {
     title: {
-      text: ''
+      text: 'Les Miserables',
+      subtext: 'Default layout',
+      top: 'bottom',
+      left: 'right'
     },
     tooltip: {},
     animationDurationUpdate: 1500,
     animationEasingUpdate: 'quinticInOut',
+    legend: [
+      {
+        // selectedMode: 'single',
+        data: ["Sports Hall","Sports Centre","Pitch","Track", "Swimming Pool"]
+      }
+    ],
     series: [
       {
+        name: 'Les Miserables',
         type: 'graph',
-        layout: 'none',
-        symbolSize: 20,
-        roam: true,
-        label: {
-          show: true,
-        },
-        edgeSymbol: ['circle', 'arrow'],
-        edgeSymbolSize: [4, 10],
-        edgeLabel: {
-          fontSize: 20,
-        },
+        layout: 'force',
         data: this.dataObjects.value,
         links: this.dataLinks,
-        lineStyle: {
-          opacity: 0.9,
-          width: 2,
-          curveness: 0,
+        categories: [
+          { name: "Sports Hall"},
+          { name: "Sports Centre"} ,
+          { name: "Pitch"},
+          { name: "Track"},
+          { name: "Swimming Pool"}
+        ],
+        roam: true,
+        label: {
+          position: 'right'
+        },
+        force: {
+          repulsion: 100
         }
       }
     ]
@@ -141,37 +150,48 @@ export class CityService {
 
       this.dataObjects.next(this.convertOSMDataInChartData(response));
 
-      this.options.next( {
-        title: {
-          text: ''
-        },
-        tooltip: {},
-        animationDurationUpdate: 1500,
-        animationEasingUpdate: 'quinticInOut',
-        series: [
-          {
-            type: 'graph',
-            layout: 'none',
-            symbolSize: 20,
-            roam: true,
-            label: {
-              show: true,
-            },
-            edgeSymbol: ['circle', 'arrow'],
-            edgeSymbolSize: [4, 10],
-            edgeLabel: {
-              fontSize: 20,
-            },
-            data: this.dataObjects.value,
-            links: this.dataLinks,
-            lineStyle: {
-              opacity: 0.9,
-              width: 2,
-              curveness: 0,
+      this.options.next( 
+        {
+          title: {
+            text: 'Les Miserables',
+            subtext: 'Default layout',
+            top: 'bottom',
+            left: 'right'
+          },
+          tooltip: {},
+          animationDurationUpdate: 1500,
+          animationEasingUpdate: 'quinticInOut',
+          legend: [
+            {
+              // selectedMode: 'single',
+              data: ["Sports Hall","Sports Centre","Pitch","Track","Swimming Pool"]
             }
-          }
-        ]
-      });
+          ],
+          series: [
+            {
+              name: '',
+              type: 'graph',
+              layout: 'force',
+              data: this.dataObjects.value,
+              links: this.dataLinks,
+              categories: [
+                { name: "Sports Hall"},
+                { name: "Sports Centre"} ,
+                { name: "Pitch"},
+                { name: "Track"},
+                { name: "Swimming Pool"}
+               ],
+              roam: true,
+              label: {
+                position: 'right'
+              },
+              force: {
+                repulsion: 100
+              }
+            }
+          ]
+        }
+      );
 
       console.log(this.dataObjects.value);
 
@@ -211,7 +231,7 @@ export class CityService {
       var ObjectDataOSM: any = Array();
       ObjectDataOSM = response["elements"];
       for(var i = 0; i < ObjectDataOSM.length; i++) {
-        if(ObjectDataOSM[i]["type"] == "node") {
+        if(ObjectDataOSM[i].hasOwnProperty("tags")) {
           ObjectDataOSM.splice(i,1);
           i--;
         }
