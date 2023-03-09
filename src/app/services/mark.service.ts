@@ -13,7 +13,7 @@ export class MarkService {
   getMarkByDataObjetsAndPopulation(dataObjects: any,population : number) : number {
     console.log(population);
     console.log(dataObjects);
-    console.log(dataObjects.length*80000 / population);
-    return dataObjects.length*80000 / population;
+    console.log(dataObjects.length*1400 / population);
+    return dataObjects.length*1400 / population;
   }
 }
