@@ -321,6 +321,16 @@ export class CityService {
     });
    }
 
+   var countID: number = id.length;
+   var currentIndex: number = 4; 
+
+   for(var i = 1; countID > 0; i++) {
+    for(var j = 0; j < i*2*3; j++) {
+      
+    }
+   }
+   
+
    if(resultArray.length > 4) {
 
    }
@@ -328,7 +338,7 @@ export class CityService {
    return resultArray;
   }
 
-  private threePointSnowflakeConstruction (pointNumber: number, ) {
+  private threePointSnowflakeConstruction (pointNumber: number) {
     
   }
 }
