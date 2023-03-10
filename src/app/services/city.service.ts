@@ -5,6 +5,8 @@ import { BehaviorSubject, catchError, Observable, retry, throwError } from "rxjs
 import { ErrorService } from "./error.service";
 import type { EChartsOption } from 'echarts';
 import { MarkService } from './mark.service';
+import { Link } from '../entity/link';
+import { InfrastructureUnit } from '../entity/infrastructureUnit';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +17,9 @@ export class CityService {
 
   population: number;
 
-  dataObjects: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  dataObjects: BehaviorSubject<any> = new BehaviorSubject<Array<InfrastructureUnit>>([]);
 
-  dataLinks: any = Array();
+  dataLinks: any = Array<Link>();
 
   optionsTemplate: EChartsOption = {
     title: {
@@ -155,7 +157,7 @@ export class CityService {
     }
   }
 
-  private convertOSMDataInChartData(response: any): any {
+  private convertOSMDataInChartData(response: any): Array<InfrastructureUnit> {
     var ObjectDataOSM: any = Array();
     ObjectDataOSM = response["elements"];
     for (var i = 0; i < ObjectDataOSM.length; i++) {
@@ -165,7 +167,7 @@ export class CityService {
       }
     }
 
-    var ObjectData = Array();
+    var ObjectData = Array<InfrastructureUnit>();
 
     for (var i = 0; i < ObjectDataOSM.length; i++) {
       var name: string = "";
@@ -242,8 +244,9 @@ export class CityService {
         name: name,
         x: xCoordinate,
         y: Math.random() * (2000 - 1000) + 1000,
-        value: Math.random() * (100 - 0) + 0,
-        category: categoreNumber
+        value: (Math.random() * (100 - 0) + 0).toString(),
+        category: categoreNumber,
+        symbolSize: 10
       })
     }
 
@@ -252,11 +255,12 @@ export class CityService {
     return ObjectData;
   };
 
-  private configureDataLinksByData(dataObjects: any): any {
+  private configureDataLinksByData(dataObjects: any): Array<Link> {
 
-    var dataLinksResult: any = Array();
+    var dataLinksResult: any = Array<Link>();
     for (var i = 0; i < dataObjects.length; i++) {
       dataLinksResult.push({
+        id: i,
         source: Math.round(Math.random() * (dataObjects.length - 0) + 0),
         target: Math.round(Math.random() * (dataObjects.length - 0) + 0)
       })
