@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵflushModuleScopingQueueAsMuchAsPossible } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { City } from "../entity/city";
 import { BehaviorSubject, catchError, Observable, retry, throwError } from "rxjs";
@@ -38,7 +38,7 @@ export class CityService {
     ],
     series: [
       {
-        name: 'Les Miserables',
+        name: 'Sports Facility',
         type: 'graph',
         layout: 'force',
         data: this.dataObjects.value,
@@ -108,7 +108,7 @@ export class CityService {
           ],
           series: [
             {
-              name: 'Les Miserables',
+              name: 'Sports Facility',
               type: 'graph',
               layout: 'force',
               data: this.dataObjects.value,
@@ -244,7 +244,7 @@ export class CityService {
         name: name,
         x: xCoordinate,
         y: Math.random() * (2000 - 1000) + 1000,
-        value: (Math.random() * (100 - 0) + 0).toString(),
+        value: value,
         category: categoreNumber,
         symbolSize: 10
       })
@@ -258,14 +258,7 @@ export class CityService {
   private configureDataLinksByData(dataObjects: any): Array<Link> {
 
     var dataLinksResult: any = Array<Link>();
-    for (var i = 0; i < dataObjects.length; i++) {
-      dataLinksResult.push({
-        id: i,
-        source: Math.round(Math.random() * (dataObjects.length - 0) + 0),
-        target: Math.round(Math.random() * (dataObjects.length - 0) + 0)
-      })
-    }
-
+  
     var sorceObjectArray : any = {
       sports_hall : [],
       sports_centre: [],
@@ -275,7 +268,7 @@ export class CityService {
       Other: []
     }
 
-    for(var i = 0; i < dataObjects; i++) {
+    for(var i = 0; i < dataObjects.length; i++) {
       switch(dataObjects[i]["category"]) {
         case 0: {
           sorceObjectArray.sports_hall.push(dataObjects[i]);
@@ -304,40 +297,94 @@ export class CityService {
       }
     }
 
-    for(var i = 0; i <  sorceObjectArray.sports_hall.length; i++) {
-      dataLinksResult.push({
-        source: "f",
-        target: "r"
-      });
-    }
+    console.log(sorceObjectArray.sports_centre);
 
+    dataLinksResult = dataLinksResult.concat(this.generateNodeFigureByIdArray(sorceObjectArray.sports_centre));
+    dataLinksResult = dataLinksResult.concat(this.generateNodeFigureByIdArray(sorceObjectArray.pitch));
+    dataLinksResult = dataLinksResult.concat(this.generateNodeFigureByIdArray(sorceObjectArray.sports_hall));
+    dataLinksResult = dataLinksResult.concat(this.generateNodeFigureByIdArray(sorceObjectArray.track));
+    dataLinksResult = dataLinksResult.concat(this.generateNodeFigureByIdArray(sorceObjectArray.swimming_pool));
+    dataLinksResult = dataLinksResult.concat(this.generateNodeFigureByIdArray(sorceObjectArray.Other));
+    
+
+    console.log(dataLinksResult);
     return dataLinksResult;
   }
 
-  private generateNodeFigureByIdArray(id: number[]) : Array<any> {
+  private generateNodeFigureByIdArray(sourceObjectArray: InfrastructureUnit[]) : Array<any> {
 
-    var resultArray : any = Array();
+    var resultArray : any = Array<Link>();
 
-   for(var i = 1; i < 4 && i < id.length; i++) {
+   for(var i = 1; i < 4 && i < sourceObjectArray.length; i++) {
     resultArray.push({
-      source: id[0],
-      target: id[i]
+      source: sourceObjectArray[0]["id"],
+      target: sourceObjectArray[i]["id"]
     });
    }
 
-   var countID: number = id.length;
+   console.log(resultArray);
+   console.log(sourceObjectArray);
+
+   var countID: number = sourceObjectArray.length;
    var currentIndex: number = 4; 
 
    for(var i = 1; countID > 0; i++) {
-    for(var j = 0; j < i*2*3; j++) {
-      
+
+    var sourceIdArray: number[] = Array<number>();
+    var targetIdArray: number[] = Array<number>();
+    
+
+    for(var j = 0; j < i*3; j++) {
+      if(sourceObjectArray[(currentIndex-i*3)+j] != undefined) {
+        sourceIdArray[j] = sourceObjectArray[(currentIndex-i*3)+j]["id"];
+      } else {
+        break;
+      }
     }
+    for(var j = 0; j < i*3*2; j++) {
+      if(sourceObjectArray[currentIndex] != undefined) {
+        targetIdArray[j] = sourceObjectArray[currentIndex]["id"]
+      } else {
+        break;
+      }
+      currentIndex++;
+    }
+
+    countID -= i*3*2;
+
+    console.log(sourceIdArray);
+    console.log(targetIdArray);
+
+    for(var j = 0; j < sourceIdArray.length; j++){
+       resultArray.push({
+        source: sourceIdArray[j],
+        target: targetIdArray[(j)*2]
+       });
+       resultArray.push({
+        source: sourceIdArray[j],
+        target: targetIdArray[(j+1)*2-1]
+       });
+    }
+
+    for(var j = 0; j < sourceIdArray.length; j++ )
+
+    console.log(resultArray);
+    console.log(i);
+    console.log(countID);
    }
+
+   console.log(resultArray);
+
+  
    
 
    if(resultArray.length > 4) {
 
    }
+
+   console.log(resultArray);
+
+
 
    return resultArray;
   }
